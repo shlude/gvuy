@@ -1,5 +1,4 @@
 # caddy使用
-Pointfocus注册码：  17566FT6xwer310
 
 ### 配置文件
 
