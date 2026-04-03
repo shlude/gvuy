@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>奇怪的脚本</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        .nav {
+            max-width: 860px;
+            width: 90%;
+            margin-bottom: 24px;
+        }
+
+        .nav a {
+            color: #00c6ff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            display: inline;
+        }
+
+        .nav a:hover {
+            opacity: 1;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 48px 56px;
+            max-width: 860px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #00c6ff;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 0;
+            display: block;
+        }
+
+        h1:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            display: block;
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin: 8px 0 24px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            font-family: "Fira Code", "Cascadia Code", "Source Code Pro", monospace;
+            font-size: 13.5px;
+            color: #7dd3fc;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <a href="index.html">← 返回首页</a>
+</div>
+
+<div class="container">
+
+    <h1>获取鼠标坐标</h1>
+    <p>不能鼠标点击获取，鼠标移到相应位置再运行脚本，很鸡肋。</p>
+    <pre><code>import pyautogui
+print(pyautogui.position())</code></pre>
+
+    <h1>列表元素 → 复制到剪贴板 → 定位点击 → Ctrl+V 粘贴</h1>
+    <p>依赖安装：</p>
+    <pre><code>pip install pyautogui pyperclip</code></pre>
+    <pre><code>import pyautogui
+import pyperclip
+import time
+
+# 你的字符串列表
+data_list = [
+    "第一条内容",
+    "第二条内容",
+    "第三条内容",
+]
+
+# 👉 目标位置（你需要改成你的输入框坐标）
+x, y = 1000, 500
+
+# 给你时间切换到 scrcpy 窗口
+print("3秒后开始...")
+time.sleep(3)
+
+for text in data_list:
+    pyperclip.copy(text)     # 复制到剪贴板
+    pyautogui.click(x, y)    # 点击输入框
+    pyautogui.hotkey('ctrl', 'v')  # 粘贴
+    pyautogui.press('enter') # 回车（如需提交）
+    time.sleep(1)            # 防止太快
+
+print("完成")</code></pre>
+
+</div>
+</body>
+</html>

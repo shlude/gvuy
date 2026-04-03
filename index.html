@@ -4,12 +4,60 @@
     <meta charset="UTF-8">
     <title>ZZCD 项目</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 48px 56px;
+            max-width: 640px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #aaa;
+            margin-bottom: 32px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 8px 8px 0 0;
+            padding: 11px 24px;
+        }
+
+        a:nth-child(3) {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+
+        a:nth-child(4) {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 32px 24px; }
+            h1 { font-size: 24px; }
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h1>欢迎访问 ZZCD 项目</h1>
     <p>这是一个测试页面。</p>
     <a href="web_build.html">点击查看博客建设步骤</a>
+    <a href="odd_script.html">奇怪的脚本</a>
 </div>
 </body>
 </html>
